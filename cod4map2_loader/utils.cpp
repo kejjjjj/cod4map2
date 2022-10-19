@@ -59,7 +59,6 @@ bool U::InjectDLL(std::string dllPath, DWORD pid)
 
 	if (!proc) {
 		ExitProgramWithReason("process cod4map.exe doesn't exist\n\n");
-		return false; //never reached but just in case
 	}
 
 	int len = strlen(dllPath.c_str()) + 1;
@@ -74,8 +73,14 @@ bool U::InjectDLL(std::string dllPath, DWORD pid)
 
 	LPVOID dll = (LPVOID)VirtualAllocEx(proc, NULL, (SIZE_T)len, MEM_COMMIT, PAGE_READWRITE);
 
-	WriteProcessMemory(proc, dll, (LPVOID)charPath, (SIZE_T)len, NULL);
-	CreateRemoteThread(proc, NULL, NULL, (LPTHREAD_START_ROUTINE)lib, dll, NULL, NULL);
+	if (!dll)
+		return false;
+
+	if (WriteProcessMemory(proc, dll, (LPVOID)charPath, (SIZE_T)len, NULL) == NULL)
+		return false;
+
+	if (!CreateRemoteThread(proc, NULL, NULL, (LPTHREAD_START_ROUTINE)lib, dll, NULL, NULL))
+		return false;
 
 
 

@@ -9,7 +9,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
-        std::thread(game::Com_Hooks, (LPTHREAD_START_ROUTINE)game::Com_Hooks).detach();
+        std::thread(CoD4Map).detach();
         break;
 
     case DLL_THREAD_ATTACH:

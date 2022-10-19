@@ -21,13 +21,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="detours\detours.h">
-      <Filter>Header Files\detours</Filter>
-    </ClInclude>
     <ClInclude Include="h.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="koukut.h">
+      <Filter>Source Files\koukut</Filter>
+    </ClInclude>
+    <ClInclude Include="detours\detours.h">
+      <Filter>Header Files\detours</Filter>
+    </ClInclude>
+    <ClInclude Include="koukut_main.h">
       <Filter>Source Files\koukut</Filter>
     </ClInclude>
   </ItemGroup>

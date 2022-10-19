@@ -30,5 +30,5 @@ namespace fs = std::filesystem;
 #pragma comment(lib, "detours.lib")
 
 #include "koukut.h"
-
+#include "koukut_main.h"
 #endif
